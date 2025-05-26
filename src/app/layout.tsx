@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark"> {/* Set dark theme as default */}
+    <html lang="en" className="dark">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground min-h-screen flex flex-col`}>
         <QueryClientProvider>
           <div className="flex-grow">
