@@ -82,13 +82,57 @@ export default {
   				to: {
   					height: '0'
   				}
-  			}
+  			},
+        'fadeIn': {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
-  		}
+  			'accordion-up': 'accordion-up 0.2s ease-out',
+        'fadeIn': 'fadeIn 0.5s ease-out forwards', // added forwards to maintain end state
+  		},
+      typography: (theme: (path: string) => string) => ({
+        DEFAULT: {
+          css: {
+            '--tw-prose-body': theme('colors.foreground / 0.9'),
+            '--tw-prose-headings': theme('colors.primary'),
+            '--tw-prose-lead': theme('colors.muted.foreground'),
+            '--tw-prose-links': theme('colors.accent'),
+            '--tw-prose-bold': theme('colors.foreground'),
+            '--tw-prose-counters': theme('colors.muted.foreground'),
+            '--tw-prose-bullets': theme('colors.muted.foreground'),
+            '--tw-prose-hr': theme('colors.border'),
+            '--tw-prose-quotes': theme('colors.primary'),
+            '--tw-prose-quote-borders': theme('colors.accent / 0.5'),
+            '--tw-prose-captions': theme('colors.muted.foreground'),
+            '--tw-prose-code': theme('colors.accent'),
+            '--tw-prose-pre-code': theme('colors.accent.foreground'),
+            '--tw-prose-pre-bg': theme('colors.accent / 0.1'),
+            '--tw-prose-th-borders': theme('colors.border'),
+            '--tw-prose-td-borders': theme('colors.border / 0.5'),
+            '--tw-prose-invert-body': theme('colors.foreground'),
+            '--tw-prose-invert-headings': theme('colors.primary'),
+            '--tw-prose-invert-lead': theme('colors.muted.foreground'),
+            '--tw-prose-invert-links': theme('colors.accent'),
+            '--tw-prose-invert-bold': theme('colors.foreground'),
+            '--tw-prose-invert-counters': theme('colors.muted.foreground'),
+            '--tw-prose-invert-bullets': theme('colors.muted.foreground'),
+            '--tw-prose-invert-hr': theme('colors.border / 0.5'),
+            '--tw-prose-invert-quotes': theme('colors.primary'),
+            '--tw-prose-invert-quote-borders': theme('colors.accent / 0.7'),
+            '--tw-prose-invert-captions': theme('colors.muted.foreground'),
+            '--tw-prose-invert-code': theme('colors.accent.foreground'), // text color for inline code
+            '--tw-prose-invert-pre-code': theme('colors.accent.foreground'), // text color for code block
+            '--tw-prose-invert-pre-bg': 'hsl(var(--accent) / 0.15)', // bg for code block
+          },
+        },
+      }),
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    require('@tailwindcss/typography')
+  ],
 } satisfies Config;
