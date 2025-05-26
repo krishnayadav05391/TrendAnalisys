@@ -38,7 +38,7 @@ export default function StockSearch() {
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      tickerSymbol: "",
+      tickerSymbol: "TSLA",
     },
   });
 
